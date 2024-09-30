@@ -15,12 +15,13 @@ let actual_price;
 
 
 let user_km = prompt("Inserire numero di km da percorrere:");
+user_km = Number(user_km);
 
 //to control if the user inserts a valid number of kms
 if (user_km > 0){
     
     let age = prompt("Inserire eta`:")
-    
+    age = Number(age);
     //to control if user inserts a valid age  (used 100 as maximum age, it could be changed anyway)
     if (age > 0 && age < 100){
 
