@@ -7,9 +7,25 @@
 
 
 let priceX_Km = 0.21;
-let minor_discount = 20%;
-let over65_discount = 40%;
+let minor_discount = (20*priceX_Km)/100;
+let over65_discount = (40*priceX_Km)/100;
 
 let user_km = prompt("Inserire numero di km da percorrere:")
-let age = prompt("Inserire eta`")
+let age = prompt("Inserire eta`:")
 
+let total_price = priceX_Km*user_km
+
+if(age < 18){
+    let discount = minor_discount * user_km
+    actual_price = (total_price-discount)
+}
+
+let rounded = Math.round(actual_price * 100) / 100;
+
+// let actual_price = (total_price-minor_discount)*user_km;
+console.log(rounded);
+
+
+
+// 20 : 100 = x : 0.21
+// 20*0.21/100
