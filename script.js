@@ -9,23 +9,40 @@
 let priceX_Km = 0.21;
 let minor_discount = (20*priceX_Km)/100;
 let over65_discount = (40*priceX_Km)/100;
+let actual_price;
 
-let user_km = prompt("Inserire numero di km da percorrere:")
-let age = prompt("Inserire eta`:")
 
-let total_price = priceX_Km*user_km
+let user_km = prompt("Inserire numero di km da percorrere:");
 
-if(age < 18){
-    let discount = minor_discount * user_km
-    actual_price = (total_price-discount)
+if (user_km > 0){
+    
+    let age = prompt("Inserire eta`:")
+    
+    if (age > 0 && age < 100){
+
+        let total_price = priceX_Km*user_km
+
+
+        if(age < 18){
+            discount = (minor_discount * user_km)
+        } else if (age >= 65){
+            discount = over65_discount * user_km
+        } else{
+            discount = 0
+        }
+
+        actual_price = (total_price-discount)
+        let rounded = Math.round(actual_price * 100) / 100;
+
+
+        let message = `Il costo per percorrere ${user_km}Km è di €${rounded}`;
+        console.log(message);
+
+    }
+    else{
+        console.log("Errore. L'età inserita non è valida")
+    }
+
+} else {
+    console.log("Errore. Il valore inserito non è valido")
 }
-
-let rounded = Math.round(actual_price * 100) / 100;
-
-// let actual_price = (total_price-minor_discount)*user_km;
-console.log(rounded);
-
-
-
-// 20 : 100 = x : 0.21
-// 20*0.21/100
